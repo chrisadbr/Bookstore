@@ -5,9 +5,9 @@ public class BankMain {
     public static void main(String[] args) {
 
         try{
-            SavingsAccount saving = new SavingsAccount(-100, 5);
-            atmMenu(saving);
+            SavingsAccount saving = new SavingsAccount(100, 5);
             System.out.println("Matejoo Banking Menu:\n1: Withdraw\n2: Deposit\n3: Check balance");
+            atmMenu(saving);
         }
         catch (NegativeStartingBalance e){
             System.out.println(e.getMessage());
