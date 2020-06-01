@@ -34,19 +34,24 @@ public class BankMain {
     }
     public static void withdraw(SavingsAccount svc){
         double amt;
+        double previous_balance = svc.getBalance();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount to withdraw: ");
         amt = scanner.nextDouble();
         svc.accWithdraw(amt);
         svc.setServiceCharge(250);
-        System.out.println(svc.getBalance());
+        System.out.printf("Previous balance: Tsh %,.2f\n", previous_balance);
+        System.out.printf("Service Charge: Tsh %,.2f\n", svc.getServiceCharge());
+        System.out.printf("Current balance: Tsh %,.2f\n", svc.getBalance());
     }
     public static void deposit(SavingsAccount accSvc){
         double amt;
+        double previous_balance = accSvc.getBalance();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount to deposit: ");
         amt = scanner.nextDouble();
         accSvc.accDeposit(amt);
-        System.out.println("Current balance: Tsh " + accSvc.getBalance());
+        System.out.printf("Previous balance: Tsh %,.2f\n", previous_balance);
+        System.out.printf("Current balance: Tsh %,.2f\n", accSvc.getBalance());
     }
 }
