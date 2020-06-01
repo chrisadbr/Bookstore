@@ -1,6 +1,6 @@
 public class SavingsAccount extends BankAccount{
     private boolean status = false;
-    public SavingsAccount(double blc, double interest) {
+    public SavingsAccount(double blc, double interest) throws NegativeStartingBalance {
         super(blc, interest);
     }
     public boolean isActive(){

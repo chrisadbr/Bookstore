@@ -4,9 +4,15 @@ public class BankMain {
 
     public static void main(String[] args) {
 
-        SavingsAccount saving = new SavingsAccount(12000, 5);
-        System.out.println("Matejoo Banking Menu:\n1: Withdraw\n2: Deposit\n3: Check balance");
-        atmMenu(saving);
+        try{
+            SavingsAccount saving = new SavingsAccount(-100, 5);
+            atmMenu(saving);
+            System.out.println("Matejoo Banking Menu:\n1: Withdraw\n2: Deposit\n3: Check balance");
+        }
+        catch (NegativeStartingBalance e){
+            System.out.println(e.getMessage());
+        }
+
     }
     public static void atmMenu(SavingsAccount acc){
         int choice;
@@ -33,13 +39,16 @@ public class BankMain {
         }
     }
     public static void withdraw(SavingsAccount svc){
+
         double amt;
         double previous_balance = svc.getBalance();
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount to withdraw: ");
         amt = scanner.nextDouble();
         svc.accWithdraw(amt);
         svc.setServiceCharge(250);
+
         System.out.printf("Previous balance: Tsh %,.2f\n", previous_balance);
         System.out.printf("Service Charge: Tsh %,.2f\n", svc.getServiceCharge());
         System.out.printf("Current balance: Tsh %,.2f\n", svc.getBalance());

@@ -6,9 +6,13 @@ public abstract class BankAccount {
     private double annual_interest;
     private double service_charge;
 
-    public BankAccount(double blc, double interest){
-        balance = blc;
-        annual_interest = interest;
+    public BankAccount(double blc, double interest) throws NegativeStartingBalance{
+        if (blc < 0){
+            throw new NegativeStartingBalance(blc);
+        }else{
+            balance = blc;
+            annual_interest = interest;
+        }
     }
     public void accDeposit(double amt){
         balance += amt;
